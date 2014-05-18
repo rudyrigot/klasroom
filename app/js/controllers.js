@@ -2,16 +2,16 @@
 
 /* Controllers */
 
-angular.module('klasroom.controllers', [])
-  .controller('HomeController', ['$scope', function($scope) {
+angular.module('klasroom.controllers', ['ngCookies'])
+  .controller('HomeController', ['$scope', '$cookieStore', function($scope, $cookieStore) {
 
-	$scope.c1Name = localStorage['c1Name'] || 'Academic ability',
-	$scope.c2Name = localStorage['c2Name'] || 'English-speaking level',
-	$scope.c3Name = localStorage['c3Name'] || 'Willingness to help others',
-	$scope.c4Name = localStorage['c4Name'] || 'Another criterium?',
-	$scope.nbTables = localStorage['nbTables'] || '',
+	$scope.c1Name = $cookieStore.get('c1Name') || 'Academic ability',
+	$scope.c2Name = $cookieStore.get('c2Name') || 'English-speaking level',
+	$scope.c3Name = $cookieStore.get('c3Name') || 'Willingness to help others',
+	$scope.c4Name = $cookieStore.get('c4Name') || 'Another criterium?',
+	$scope.nbTables = $cookieStore.get('nbTables') || '',
 
-	$scope.students = localStorage['students'] ? JSON.parse(localStorage['students']) : [];
+	$scope.students = $cookieStore.get('students') || [];
 
 	$scope.tables = [];
 
@@ -34,12 +34,12 @@ angular.module('klasroom.controllers', [])
 	}
 
 	$scope.save = function() {
-		localStorage['c1Name'] = $scope.c1Name;
-		localStorage['c2Name'] = $scope.c2Name;
-		localStorage['c3Name'] = $scope.c3Name;
-		localStorage['c4Name'] = $scope.c4Name;
-		localStorage['nbTables'] = $scope.nbTables;
-		localStorage['students'] = JSON.stringify($scope.students);
+		$cookieStore.put('c1Name', $scope.c1Name);
+		$cookieStore.put('c2Name', $scope.c2Name);
+		$cookieStore.put('c3Name', $scope.c3Name);
+		$cookieStore.put('c4Name', $scope.c4Name);
+		$cookieStore.put('nbTables', $scope.nbTables);
+		$cookieStore.put('students', $scope.students);
 		alert("Your data is saved! You'll find it back in this browser until you hit save again.");
 	}
 
