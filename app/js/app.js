@@ -2,12 +2,12 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', [
+angular.module('klasroom', [
   'ngRoute',
-  'myApp.filters',
-  'myApp.services',
-  'myApp.directives',
-  'myApp.controllers'
+  'klasroom.filters',
+  'klasroom.services',
+  'klasroom.directives',
+  'klasroom.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/view1', {templateUrl: 'partials/partial1.html', controller: 'MyCtrl1'});
