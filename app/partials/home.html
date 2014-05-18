@@ -105,11 +105,39 @@
     			<th>Delete</th>
     		</tr>
     		<tr ng-repeat="student in students">
-    			<td>{{student.name}}</td>
-    			<td>{{student.c1}}</td>
-    			<td>{{student.c2}}</td>
-    			<td>{{student.c3}}</td>
-    			<td>{{student.c4}}</td>
+    			<td><input type="text" ng-model="student.name"></td>
+    			<td>
+    				<select ng-model="student.c1" class="form-control">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+    				</select>
+    			</td>
+    			<td>
+    				<select ng-model="student.c2" class="form-control">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+    				</select>
+    			</td>
+    			<td>
+    				<select ng-model="student.c3" class="form-control">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+    				</select>
+    			</td>
+    			<td>
+    				<select ng-model="student.c4" class="form-control">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+    				</select>
+    			</td>
     			<td><button class="btn btn-default btn-sm" ng-click="removeStudent($index)">&#xfbe;</button></td>
     		</tr>
     	</table>
