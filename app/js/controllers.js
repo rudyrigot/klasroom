@@ -32,11 +32,13 @@ angular.module('klasroom.controllers', [])
 				});
 				$scope.newStudentName = $scope.newStudentC1 = $scope.newStudentC2 = $scope.newStudentC3 = $scope.newStudentC4 = '';
 			}
+			$scope.save();
 		}
 
 		$scope.removeStudent = function(index) {
 			console.log($scope.students[index]);
 			$scope.students.splice(index, 1);
+			$scope.save();
 		}
 	}])
 	.controller('GenerateController', ['$scope', 'save', 'init', 'reset', 'generateArrangement', function($scope, save, init, reset, generateArrangement){

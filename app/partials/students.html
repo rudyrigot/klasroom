@@ -68,9 +68,9 @@
     			<th>Delete</th>
     		</tr>
     		<tr ng-repeat="student in students">
-    			<td><input type="text" ng-model="student.name"></td>
+    			<td><input type="text" ng-model="student.name" ng-change="save()"></td>
     			<td>
-    				<select ng-model="student.c1" class="form-control">
+    				<select ng-model="student.c1" class="form-control" ng-change="save()">
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -78,7 +78,7 @@
     				</select>
     			</td>
     			<td>
-    				<select ng-model="student.c2" class="form-control">
+    				<select ng-model="student.c2" class="form-control" ng-change="save()">
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -86,7 +86,7 @@
     				</select>
     			</td>
     			<td>
-    				<select ng-model="student.c3" class="form-control">
+    				<select ng-model="student.c3" class="form-control" ng-change="save()">
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -94,7 +94,7 @@
     				</select>
     			</td>
     			<td>
-    				<select ng-model="student.c4" class="form-control">
+    				<select ng-model="student.c4" class="form-control" ng-change="save()">
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -113,6 +113,6 @@
 		<button class="btn btn-default btn-block" ng-click="reset()">Reset all</button>
 	</div>
 	<div class="col-md-2 col-sm-3 col-xs-6">
-		<a class="btn btn-primary btn-block" href="#/generate" ng-click="save()">Save &amp; next</a>
+		<a class="btn btn-primary btn-block" href="#/generate" ng-click="save()">Next</a>
 	</div>
 </div>
