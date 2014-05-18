@@ -10,6 +10,8 @@ angular.module('klasroom', [
   'klasroom.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/', {templateUrl: 'partials/home.html', controller: 'HomeController'});
-  $routeProvider.otherwise({redirectTo: '/'});
+  $routeProvider.when('/criteria', {templateUrl: 'partials/criteria.html', controller: 'CriteriaController'});
+  $routeProvider.when('/students', {templateUrl: 'partials/students.html', controller: 'StudentsController'});
+  $routeProvider.when('/generate', {templateUrl: 'partials/generate.html', controller: 'GenerateController'});
+  $routeProvider.otherwise({redirectTo: '/criteria'});
 }]);
