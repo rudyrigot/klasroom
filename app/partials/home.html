@@ -1,0 +1,172 @@
+<div class="row">
+	<div class="col-md-2 col-md-offset-8 col-sm-3 col-sm-offset-6 col-xs-6">
+		<button class="btn btn-default btn-block" ng-click="resetAll()">Reset all</button>
+	</div>
+	<div class="col-md-2 col-sm-3 col-xs-6">
+		<button class="btn btn-primary btn-block" ng-click="save()">Save</button>
+	</div>
+</div>
+
+<h2>First, name your criteria, by order of importance</h2>
+<form class="form-horizontal" role="form">
+	<div class="form-group">
+		<label for="c1Name" class="col-sm-2 control-label">Criterium 1</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" ng-model="c1Name" id="c1Name">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="c2Name" class="col-sm-2 control-label">Criterium 2</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" ng-model="c2Name" id="c2Name">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="c3Name" class="col-sm-2 control-label">Criterium 3</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" ng-model="c3Name" id="c3Name">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="c4Name" class="col-sm-2 control-label">Criterium 4</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" ng-model="c4Name" id="c4Name">
+		</div>
+	</div>
+</form>
+
+<div class="row">
+	<div class="col-md-3">
+		<h2>Add a student</h2>
+    	<form class="form-horizontal" role="form" ng-submit="addStudent()">
+			<div class="form-group">
+				<label for="newStudentName" class="col-sm-2 control-label">Name</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" ng-model="newStudentName" id="newStudentName">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="newStudentC1" class="col-sm-6 control-label">{{c1Name}}</label>
+				<div class="col-sm-6">
+					<select ng-model="newStudentC1" class="form-control">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="newStudentC2" class="col-sm-6 control-label">{{c2Name}}</label>
+				<div class="col-sm-6">
+					<select ng-model="newStudentC2" class="form-control">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="newStudentC3" class="col-sm-6 control-label">{{c3Name}}</label>
+				<div class="col-sm-6">
+					<select ng-model="newStudentC3" class="form-control">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="newStudentC4" class="col-sm-6 control-label">{{c4Name}}</label>
+				<div class="col-sm-6">
+					<select ng-model="newStudentC4" class="form-control">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+				</div>
+			</div>
+			<input class="btn btn-default btn-block" type="submit" value="Add">
+		</form>
+	</div>
+
+	<div class="col-md-9">
+    	<h2>List of students</h2>
+    	<table class="table">
+    		<tr>
+    			<th>Name</th>
+    			<th>{{c1Name}}</th>
+    			<th>{{c2Name}}</th>
+    			<th>{{c3Name}}</th>
+    			<th>{{c4Name}}</th>
+    			<th>Delete</th>
+    		</tr>
+    		<tr ng-repeat="student in students">
+    			<td>{{student.name}}</td>
+    			<td>{{student.c1}}</td>
+    			<td>{{student.c2}}</td>
+    			<td>{{student.c3}}</td>
+    			<td>{{student.c4}}</td>
+    			<td><button class="btn btn-default btn-sm" ng-click="removeStudent($index)">&#xfbe;</button></td>
+    		</tr>
+    	</table>
+    </div>
+
+</div>
+
+<h2>Generate the optimal tables</h2>
+<form class="form-horizontal" role="form">
+	<div class="form-group">
+		<label for="inputEmail3" class="col-sm-4 control-label">How many tables in your classroom?</label>
+		<div class="col-sm-2">
+			<select ng-model="nbTables" class="form-control">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+			</select>
+		</div>
+		<div class="col-sm-6">
+			<button type="submit" class="btn btn-primary btn-block" ng-click="generateArrangement()">Generate seating arrangement</button>
+		</div>
+	</div>
+</form>
+
+<div class="row">
+	<div class="col-md-3 col-sm-4 col-xs-6" ng-repeat="table in tables">
+		<h4>Table #{{$index+1}}</h4>
+		<ul>
+			<li ng-repeat="person in table">
+				{{person.name}}
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row" style="margin-top: 100px">
+	<div class="col-md-2 col-md-offset-8 col-sm-3 col-sm-offset-6 col-xs-6">
+		<button class="btn btn-default btn-block" ng-click="resetAll()">Reset all</button>
+	</div>
+	<div class="col-md-2 col-sm-3 col-xs-6">
+		<button class="btn btn-primary btn-block" ng-click="save()">Save</button>
+	</div>
+</div>
