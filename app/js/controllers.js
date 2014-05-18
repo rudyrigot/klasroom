@@ -56,3 +56,7 @@ angular.module('klasroom.controllers', [])
 		}
 
 	}])
+	.controller('DetailsController', ['$scope', 'init', 'generateArrangement', function($scope, init, generateArrangement){
+		init($scope);
+		generateArrangement($scope);
+	}])

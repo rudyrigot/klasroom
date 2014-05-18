@@ -48,10 +48,10 @@ angular.module('klasroom.services', ['ngCookies']).
 		$scope.tables = [];
 		if (!isNaN(parseInt($scope.nbTables))) {
 			// cloning the students array
-			var students = $scope.students.slice(0);
+			$scope.orderedStudents = JSON.parse(JSON.stringify($scope.students));
 
 			// sorting students from best to worst as per the criteria
-			students.sort(function(s1, s2){
+			$scope.orderedStudents.sort(function(s1, s2){
 				if (s1.c1 < s2.c1) return 1;
 				else if (s1.c1 > s2.c1) return -1;
 				else if (s1.c2 < s2.c2) return 1;
@@ -64,19 +64,23 @@ angular.module('klasroom.services', ['ngCookies']).
 			});
 
 			// pairing together best + worst, second best + second worst, etc.
-			var cursorStart = 0, cursorEnd = students.length-1, pairs = [];
+			var cursorStart = 0, cursorEnd = $scope.orderedStudents.length-1;
+			$scope.pairs = [];
 			while(cursorStart <= cursorEnd) {
-				if (cursorStart == cursorEnd) pairs.push([students[cursorStart]]);
-				else pairs.push([students[cursorStart], students[cursorEnd]]);
+				if (cursorStart == cursorEnd) $scope.pairs.push([$scope.orderedStudents[cursorStart]]);
+				else $scope.pairs.push([$scope.orderedStudents[cursorStart], $scope.orderedStudents[cursorEnd]]);
 				cursorStart++;
 				cursorEnd--;
 			}
 
 			// as long as not enough table, pairing most similar / most dissimilar groups
+			var pairs = JSON.parse(JSON.stringify($scope.pairs)); // cloning the pairs array
+			$scope.nbOfPairPairing = 0;
 			while ($scope.tables.length + pairs.length > $scope.nbTables && pairs.length > 1) {
 				var mostSimilar = pairs.pop();
 				var mostDissimilar = pairs.shift();
 				$scope.tables.push(jQuery.merge(mostSimilar, mostDissimilar));
+				$scope.nbOfPairPairing++;
 			}
 			jQuery.merge($scope.tables, pairs);
 

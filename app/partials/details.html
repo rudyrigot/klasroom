@@ -1,0 +1,68 @@
+<h2>Details of how the optimal seating is calculated</h2>
+
+<h3>Step 0 - The original list of students</h3>
+
+<table class="table">
+	<tr>
+		<th>Name</th>
+		<th>{{c1Name}}</th>
+		<th>{{c2Name}}</th>
+		<th>{{c3Name}}</th>
+		<th>{{c4Name}}</th>
+	</tr>
+	<tr ng-repeat="student in students">
+		<td>{{student.name}}</td>
+		<td>{{student.c1}}</td>
+		<td>{{student.c2}}</td>
+		<td>{{student.c3}}</td>
+		<td>{{student.c4}}</td>
+	</tr>
+</table>
+
+<h3>Step 2 - Ordering them from best to worst</h3>
+
+<table class="table">
+	<tr>
+		<th>Name</th>
+		<th>{{c1Name}}</th>
+		<th>{{c2Name}}</th>
+		<th>{{c3Name}}</th>
+		<th>{{c4Name}}</th>
+	</tr>
+	<tr ng-repeat="student in orderedStudents">
+		<td>{{student.name}}</td>
+		<td>{{student.c1}}</td>
+		<td>{{student.c2}}</td>
+		<td>{{student.c3}}</td>
+		<td>{{student.c4}}</td>
+	</tr>
+</table>
+
+<h3>Step 3 - Pairing them</h3>
+
+<p>Best + worst = most dissimilar pair; then 2nd best + 2nd worst = 2nd most dissimilar pair; etc.</p>
+<p>Last pair is the most similar pair (and can be a lone student, if there's an odd number of students).</p>
+
+<ul>
+	<li ng-repeat="pair in pairs">
+		{{pair[0].name}} {{pair[1] ? ' + '+ pair[1].name : ''}}
+		<span ng-if="$index == 0">(most dissimilar pair)</span>
+		<span ng-if="$index == pairs.length-1">(most similar pair)</span>
+	</li>
+</ul>
+
+<h3>Step 4 - Pairing the pairs</h3>
+
+<p>Then, the program pairs the most similar + most dissimilar pair to be the first table; then the 2nd most similar with the 2nd most dissimilar, etc. until we have the right amount of tables.</p>
+<p>In our present case, that move happened {{nbOfPairPairing}} time{{nbOfPairPairing > 1 ? 's' : ''}}.</p>
+
+<div class="row">
+	<div class="col-md-3 col-sm-4 col-xs-6" ng-repeat="table in tables">
+		<h4>Table #{{$index+1}}</h4>
+		<ul>
+			<li ng-repeat="person in table">
+				{{person.name}}
+			</li>
+		</ul>
+	</div>
+</div>
